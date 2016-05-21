@@ -10,8 +10,8 @@ as well as some useful ones.
 4. cd SDHackers-Slack-Bot
 5. Run these commands:
 
-  'nohup python Python/getHackComment.py &'
+  `nohup python Python/getHackComment.py &`
   
-  'nohup python Python/getHackInsult.py &'
+  `nohup python Python/getHackInsult.py &`
   
-  'nohup node hackerbot.js <ENTER TOKEN HERE> &'
+  `nohup node hackerbot.js <ENTER TOKEN HERE> &`
