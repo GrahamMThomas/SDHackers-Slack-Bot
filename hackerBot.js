@@ -266,12 +266,7 @@ rtm.on(RTM_EVENTS.MESSAGE, function (message) {
 
 			    if(message.text.substring(0,5) == "!help")
 			    {
-			    	sendToSlack("!quote - Random Quote \n
-					    		!insult - Random Insult \n
-					    		!meetup - List recent meetups \n
-					    		!meetupadd - Add Meetup to !meetup command\n
-					    		!getstarted - Get Started with SDHackers Github \n
-					    		!walkthroughs - Get Walkthroughs with SDHackers Github", mainChannel);
+			    	sendToSlack("!quote - Random Quote\n !insult - Random Insult \n!meetup - List recent meetups \n!meetupadd - Add Meetup to !meetup command\n!getstarted - Get Started with SDHackers Github \n!walkthroughs - Get Walkthroughs with SDHackers Github", mainChannel);
 			    }
 
 			    if(message.text.substring(0,7) == "!meetup" )
