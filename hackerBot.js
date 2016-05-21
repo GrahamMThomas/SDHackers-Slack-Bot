@@ -256,14 +256,12 @@ rtm.on(RTM_EVENTS.MESSAGE, function (message) {
 
 			    if(message.text.substring(0,11) == "!getstarted")
 			    {
-			    	sendToSlack("Getting Started: https://github.com/SDHackers/Start-here", \
-			    		mainChannel);
+			    	sendToSlack("Getting Started: https://github.com/SDHackers/Start-here", mainChannel);
 			    }
 
 			    if(message.text.substring(0,13) == "!walkthroughs")
 			    {
-			    	sendToSlack("Walkthroughs: https://github.com/SDHackers/Walkthroughs", m\
-			    		ainChannel);
+			    	sendToSlack("Walkthroughs: https://github.com/SDHackers/Walkthroughs", mainChannel);
 			    }
 
 			    if(message.text.substring(0,5) == "!help")
@@ -275,7 +273,6 @@ rtm.on(RTM_EVENTS.MESSAGE, function (message) {
 					    		!getstarted - Get Started with SDHackers Github \n
 					    		!walkthroughs - Get Walkthroughs with SDHackers Github", mainChannel);
 			    }
-
 
 			    if(message.text.substring(0,7) == "!meetup" )
 			    {
