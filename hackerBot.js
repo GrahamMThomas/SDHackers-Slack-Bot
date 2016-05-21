@@ -249,12 +249,35 @@ rtm.on(RTM_EVENTS.MESSAGE, function (message) {
 			    	startSendInsult(message);	
 			    }
 
-				if(message.text.substring(0,10) == "!meetupadd")
+			    if(message.text.substring(0,10) == "!meetupadd")
 			    {
 			    	addMeetup(message);	
 			    }
 
-			    else if(message.text.substring(0,7) == "!meetup" )
+			    if(message.text.substring(0,11) == "!getstarted")
+			    {
+			    	sendToSlack("Getting Started: https://github.com/SDHackers/Start-here", \
+			    		mainChannel);
+			    }
+
+			    if(message.text.substring(0,13) == "!walkthroughs")
+			    {
+			    	sendToSlack("Walkthroughs: https://github.com/SDHackers/Walkthroughs", m\
+			    		ainChannel);
+			    }
+
+			    if(message.text.substring(0,5) == "!help")
+			    {
+			    	sendToSlack("!quote - Random Quote \n
+					    		!insult - Random Insult \n
+					    		!meetup - List recent meetups \n
+					    		!meetupadd - Add Meetup to !meetup command\n
+					    		!getstarted - Get Started with SDHackers Github \n
+					    		!walkthroughs - Get Walkthroughs with SDHackers Github", mainChannel);
+			    }
+
+
+			    if(message.text.substring(0,7) == "!meetup" )
 			    {
 			    	sendMeetup(message);
 			    }
