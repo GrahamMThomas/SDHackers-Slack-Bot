@@ -3,7 +3,7 @@
 A Slack Bot with a couple of interesting functions,
 as well as some useful ones.
 
-#Installation#
+####Installation####
 1. Git clone/fork this repo
 2. Open SDHackers-Slack-Bot/Txts/magical.txt
 3. Enter the correct link
