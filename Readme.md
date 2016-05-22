@@ -8,7 +8,10 @@ as well as some useful ones.
 2. Open SDHackers-Slack-Bot/Txts/magical.txt
 3. Enter the correct link
 4. cd SDHackers-Slack-Bot
-5. Run these commands:
+5. Then open hackerbot.js
+6. Change main channel variable to your channel id
+7. Save and exit
+8. Run these commands:
 
   `nohup python Python/getHackComment.py &`
   
