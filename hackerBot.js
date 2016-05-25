@@ -10,7 +10,7 @@ var rtm = new RtmClient("token", {logLevel: 'none'});;
 
 //This channel is the direct message between me/bot
 //var mainChannel = 'D0TKTGN05'
-
+//mainChannel = 'C0TL9F62W'
 
 //Meetups
 var meetups = ["","","","",""];
@@ -180,6 +180,25 @@ function sendInsult(commandMessage, insult)
 	}
 }
 
+/******************************************************
+Usage:	After receiving the command, it will grab a quote 
+		from TIL and showerthoughts subreddit 
+		archive to print out
+*****************************************************/
+function startSendRandomQuote(message)
+{
+	runPythonScript('Python/randomQuote.py');
+	setTimeout(function()
+	{
+		sendRandomQuote(message, pythonOutput);
+	}, 250);
+}
+
+function sendRandomQuote(commandMessage, quote)
+{
+	sendToSlack(quote, mainChannel);
+}
+
 /*
 Usage:  Add meetup to the meetups array. Make
 		the added meetup at the top of the list
@@ -273,6 +292,11 @@ rtm.on(RTM_EVENTS.MESSAGE, function (message) {
 			    {
 			    	sendMeetup(message);
 			    }
+			    if(message.text == "!random")
+			    {
+				startSendRandomQuote(message);
+			    }
+
 			}
 			else
 			{
