@@ -10,7 +10,6 @@ var rtm = new RtmClient("token", {logLevel: 'none'});;
 
 //This channel is the direct message between me/bot
 //var mainChannel = 'D0TKTGN05'
-var mainChannel = 'C0TL9F62W'
 
 //Meetups
 var meetups = ["","","","",""];
@@ -125,7 +124,7 @@ function startSendQuote(message)
 function sendQuote(commandMessage, quote)
 {
 	//Need to give time to access the python file before printing.
-	sendToSlack(quote, mainChannel);		
+	sendToSlack(quote, commandMessage.channel);		
 }
 
 /*
@@ -194,7 +193,7 @@ function startSendRandomQuote(message)
 	setTimeout(function()
 	{
 		sendRandomQuote(message, pythonOutput);
-	}, 1600);
+	}, 3000);
 }
 
 function sendRandomQuote(commandMessage, quote)
@@ -259,7 +258,7 @@ rtm.on(RTM_EVENTS.MESSAGE, function (message) {
 			  		onChannelJoin(message);
 			    }
 
-			    if(message.text == "!quote")
+			    if(message.text == "!quote" && message.channel.substring(0,2) == "D0")
 			    {
 			    	console.log("Finding Quote....\n");
 			  		startSendQuote(message);
@@ -297,7 +296,7 @@ rtm.on(RTM_EVENTS.MESSAGE, function (message) {
 			    }
 			    if(message.text == "!interesting")
 			    {
-				startSendRandomQuote(message);
+					startSendRandomQuote(message);
 			    }
 
 			}
