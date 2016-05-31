@@ -10,7 +10,7 @@ var rtm = new RtmClient("token", {logLevel: 'none'});;
 
 //This channel is the direct message between me/bot
 //var mainChannel = 'D0TKTGN05'
-
+var mainChannel = 'C0TL9F62W'
 
 //Meetups
 var meetups = ["","","","",""];
@@ -60,7 +60,7 @@ function runPythonScript(file)
 		try
 		{	
 			//Set pythonOutput so other methods can pull this var
-			setPythonOutput(results[0]);		
+			setPythonOutput(results[0]);
 			console.log(pythonOutput);
 		}
 		catch(err){}
@@ -79,6 +79,7 @@ PLEASE NOTE THIS METHOD--------------
 function setPythonOutput(variable)
 {
 	pythonOutput = variable;
+	console.log("variable changed");
 }
 
 /*
@@ -88,6 +89,7 @@ Usage:  Give message and channel to
 function sendToSlack(messageToSend, channel)
 {
 	//Using slack api, send the message to the designated channel
+	console.log("sending to slack")
 	rtm.sendMessage(messageToSend, channel, function messageSent() { });
 }
 
@@ -178,6 +180,26 @@ function sendInsult(commandMessage, insult)
 		messageToSend = "<@" + commandMessage.user + "> tried to insult the wall.";
 		sendToSlack(messageToSend, mainChannel);
 	}
+}
+
+/*
+Usage:	After receiving the command, it will grab a quote 
+		from TIL and showerthoughts subreddit 
+		archive to print out
+*/
+function startSendRandomQuote(message)
+{
+	console.log("starting random quote");
+	runPythonScript('Python/interestingQuote.py');
+	setTimeout(function()
+	{
+		sendRandomQuote(message, pythonOutput);
+	}, 1600);
+}
+
+function sendRandomQuote(commandMessage, quote)
+{
+	sendToSlack(quote, mainChannel);
 }
 
 /*
@@ -273,6 +295,11 @@ rtm.on(RTM_EVENTS.MESSAGE, function (message) {
 			    {
 			    	sendMeetup(message);
 			    }
+			    if(message.text == "!interesting")
+			    {
+				startSendRandomQuote(message);
+			    }
+
 			}
 			else
 			{
